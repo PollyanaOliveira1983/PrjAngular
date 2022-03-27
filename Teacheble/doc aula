@@ -1,0 +1,63 @@
+mas como que vc chamou o formulário, bruno? é isso q eu não consegui
+vc usou o #form =  "ngForm"?
+na tag <form>
+Bruno Araujo09:39
+botei na tag form uma variável de template com o nome #formulario, depois usei o ViewChild pra pegar ela no TS
+com o elementRef e tal
+Bruno Araujo09:40
+Não sei se tem outra forma de resetar ele pelo driven form ou reative form, mas foi oq pensei na hora kk,,
+
+
+import { Component, Inject } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+export interface DialogData {
+  loginUser:FormGroup
+}
+
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  loginUser: FormGroup = new FormGroup ({
+  name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  lastname: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  cpf:  new FormControl('', [Validators.required, Validators.minLength(11)]),
+  telefone: new FormControl('', [Validators.required, Validators.minLength(8)]),
+  endereco: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  complemento: new FormControl(''),
+  username: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  senha: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  confsenha: new FormControl('', [Validators.required, Validators.minLength(6)]),
+})
+  
+
+  submit():void{
+    console.log(`Name = ${this.loginUser.controls['name'].value}`)
+    console.log(`LastName = ${this.loginUser.controls['lastname'].value}`)
+    console.log(`Cpf = ${this.loginUser.controls['cpf'].value}`)
+    console.log(`Telefone = ${this.loginUser.controls['telefone'].value}`)
+    console.log(`Endereco = ${this.loginUser.controls['endereco'].value}`)
+    console.log(`Complemento = ${this.loginUser.controls['complemento'].value}`)
+    console.log(`Username = ${this.loginUser.controls['username'].value}`)
+    console.log(`Senha = ${this.loginUser.controls['senha'].value}`)
+    console.log(`Confsenha = ${this.loginUser.controls['confsenha'].value}`)
+
+    if (this.loginUser.controls['senha'].value !=
+        this.loginUser.controls['confsenha'].value) {
+          alert("SENHAS DIFERENTES! FAVOR DIGITAR SENHAS IGUAIS");
+          return ;
+        }
+  }
+  constructor(public dialog: MatDialog) {}
+
+  openDialog() {
+    this.dialog.open(AppComponent, { data:{submit():void{}}
+
+    });
+  }
+}

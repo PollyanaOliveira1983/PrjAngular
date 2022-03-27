@@ -1,0 +1,374 @@
+aula 16/03
+
+ <!--
+    <mat-card-content>
+      <form
+        action="#"
+        id="main-form"
+        (ngSubmit)="submit()"
+        #form="ngForm"
+
+      >
+        <div class="form-row">
+          <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input
+            type="text"
+            matInput
+            placeholder="Seu nome..."
+            [(ngModel)]="name"
+            name="name"
+            autocomplete="false"
+            required
+            minlength="3"
+            #inputName="ngModel"
+            >
+            <mat-error *ngIf="inputName.invalid">
+              <span *ngIf="inputName.errors?.['minlength']">
+                Você não preencheu o campo corretamente.
+              </span>
+              <span *ngIf="inputName.errors?.['required']">
+                Este campo é obrigatório!
+              </span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Sobrenome</mat-label>
+            <input
+            type="text"
+            matInput
+            placeholder="Seu sobrenome..."
+            [(ngModel)]="lastname"
+            name="lastname"
+            autocomplete="false"
+            required
+            minlength="3"
+            #inputLastName="ngModel"
+            >
+            <mat-error *ngIf="inputLastName.invalid">
+              <span *ngIf="inputLastName.errors?.['minlength']">
+                Você não preencheu o campo corretamente (no minino 3 caracteres).
+              </span>
+              <span *ngIf="inputLastName.errors?.['required']">
+                Este campo é obrigatório!
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-row col">
+          <mat-form-field appearance="fill" class="grow">
+            <mat-label>E-mail</mat-label>
+            <input
+            type="email"
+            matInput
+            placeholder="email@email.com"
+            name="email"
+            [(ngModel)]="email"
+            required
+            minlength="8"
+            #inputEmail="ngModel"
+            email
+            >
+          </mat-form-field>
+          <mat-error *ngIf="inputEmail.invalid">
+            <span *ngIf="inputEmail.errors?.['minlength']">
+              Você não preencheu o campo corretamente (no minino 8 caracteres).
+            </span>
+            <span *ngIf="inputEmail.errors?.['required']">
+              Este campo é obrigatório!
+            </span>
+            <span *ngIf="inputEmail.errors?.['email']">
+              Isso não é um email >:
+            </span>
+          </mat-error>
+        </div>
+        <div class="form-row col">
+          <button
+          mat-raised-button
+          type="submit"
+          color="accent"
+          class="grow"
+          [disabled]="form.invalid"
+          >Cadastrar</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card> -->
+          </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+import { Component } from '@angular/core';
+import { EmailValidator, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'aula1603';
+
+  /* name: string = ''
+  lastname: string = ''
+  email: string = ''
+ */
+
+  /* name: FormControl = new FormControl('')
+  lastname: FormControl = new FormControl('')
+  email: FormControl = new FormControl('')
+  sex: FormControl = new FormControl('') */
+
+  /* personalData: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    lastname: new FormControl(''),
+    email: new FormControl(''),
+    sex: new FormControl('')
+
+  }) */
+
+
+  /*personalData: FormGroup = this.fb.group({
+    name: this.fb.control(''),
+    lastname: this.fb.control(''),
+    email: this.fb.control(''),
+    sex: this.fb.control('')
+
+  }) */
+
+  /* personalData: FormGroup = this.fb.group({
+    name: [''],
+    lastname: [''],
+    email: [''],
+    sex: [''],
+    /* tels: this.fb.array([
+      ['']
+    ])
+  }) */
+  
+  
+  submit():void {
+    /* console.log(`Name = ${this.name}`)
+    console.log(`Last Name = ${this.lastname}`)
+    console.log(`Email = ${this.email}`)
+ */
+    /* console.log(`Name = ${this.name.value}`)
+    console.log(`Last Name = ${this.lastname.value}`)
+    console.log(`Email = ${this.email.value}`)
+    console.log(`Sexo = ${this.sex.value}`) */
+
+
+
+
+---------------------------------------------------------------------
+
+<div class="container">
+ <div>
+    <mat-card-header>
+      <mat-card-title>Cadastre-se!</mat-card-title>
+    </mat-card-header>
+  <div class="container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Cadastre-se</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form
+        action="#"
+        id="main-form"
+        (ngSubmit)="submit()"
+        [formGroup]="personalData"        >
+
+          <div class="form-row">
+            <mat-form-field appearance="fill">
+              <mat-label>Nome</mat-label>
+              <input
+              type="text"
+              matInput
+              placeholder="Seu Nome..."
+              formControlName="name"
+              >
+              <mat-error>
+                <span *ngIf="personalData.controls['name'].getError('required')">
+                  Este campor é obrigatório!
+                </span>
+                <span *ngIf="personalData.controls['name'].getError('minlength')">
+                  Faltam caracteres (No mínino 3)
+                </span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Sobrenome</mat-label>
+              <input
+              type="text"
+              matInput
+              placeholder="Seu Sobrenome..."
+              formControlName="lastname"
+              >
+              <mat-error>
+                <span *ngIf="personalData.controls['lastname'].getError('required')">
+                  Este campor é obrigatório!
+                </span>
+                <span *ngIf="personalData.controls['lastname'].getError('minlength')">
+                  Faltam caracteres (No mínino 3)
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row col">
+            <mat-form-field appearance="fill" class="grow">
+              <mat-label>E-mail</mat-label>
+              <input
+              type="email"
+              matInput
+              placeholder="Email"
+              formControlName="email"
+              >
+              <mat-error>
+                <span *ngIf="personalData.controls['email'].getError('required')">
+                  Este campor é obrigatório!
+                </span>
+                <span *ngIf="personalData.controls['email'].getError('email')">
+                  Isso não é um e-mail valido!
+                </span>
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+          <div class="form-row col">
+            <mat-form-field appearance="fill" class="grow">
+              <mat-label>Selecione seu Sexo</mat-label>
+              <mat-select formControlName="sex">
+                <mat-option value="M">
+                  Masculino
+                </mat-option>
+                <mat-option value="F">
+                  Feminino
+                </mat-option>
+              </mat-select>
+              <mat-error>
+                <span *ngIf="personalData.controls['sex'].getError('required')">
+                  Este campor é obrigatório!
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+         <div
+          formArrayName="tels">
+            <mat-form-field
+            appearance="fill"
+            class="grow"
+            *ngFor="let c of tels.controls; let i = index"
+            >
+              <mat-label>Contato</mat-label>
+              <input
+              type="tel"
+              matInput
+              placeholder="Digite seu número de telefone"
+              [formControlName]="i"
+              >
+            </mat-form-field>
+
+            <button
+            mat-icon-button
+            color=" warn"
+            type="button"
+            (click)="newContact()"
+            >
+            <mat-icon>add</mat-icon>
+            </button>
+          </div>
+
+          <div class="form-row col">
+           <button
+           mat-raised-button
+           type="submit"
+           color="accent"
+           class="grow"
+           [disabled]="personalData.invalid"
+           >Cadastrar</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+import { Component } from '@angular/core';
+import { EmailValidator, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'aula1603';
+
+    personalData: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    lastname: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    sex: new FormControl('',[Validators.required]),
+    tels: new FormArray([new FormControl('', [Validators.required]), new FormControl('', [Validators.required])])
+})
+  tels: FormArray = this.personalData.get('tels') as FormArray
+
+  constructor(
+
+    private snack: MatSnackBar,
+    private fb: FormBuilder
+
+  ){}
+
+  submit():void {
+
+    console.log(`Name= ${this.personalData.controls['name'].value}`)
+    console.log(`LastName= ${this.personalData.controls['lastname'].value}`)
+    console.log(`Email = ${this.personalData.controls['email'].value}`)
+    console.log(`Sex = ${this.personalData.controls['sex'].value}`)
+    console.log(`Tels:`)
+
+    this.tels.controls.forEach((control) => {
+      console.log(control.value)
+    })
+
+    this.snack.open(`Voce foi cadastrado!`, 'ok', { duration: 3000 })
+  }
+    newContact(): void{
+      this.tels.push(new FormControl('',[Validators.required]))
+    }
+
+  deleteContact():void{
+    this.tels.controls = this.tels.controls.filter((x , index) => {
+      return index != this.tels.controls.length - 1
+    })
+  }
+
+}
+
+https://www.fabricadecodigo.com/criar-formulario-reactive-forms/
+
+
+https://www.tektutorialshub.com/angular/angular-template-driven-forms/
+
+
+https://www.fabricadecodigo.com/criar-formulario-template-driven-forms/
+
+
+
+https://www.youtube.com/watch?v=8k4ctDmVn7w
+
+https://www.youtube.com/watch?v=44PZFXaUa0U

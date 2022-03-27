@@ -1,0 +1,165 @@
+import { Component, Inject } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+export interface DialogData {
+  loginUser:FormGroup
+}
+
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  loginUser: FormGroup = new FormGroup ({
+  name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  lastname: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  cpf:  new FormControl('', [Validators.required, Validators.minLength(11)]),
+  telefone: new FormControl('', [Validators.required, Validators.minLength(8)]),
+  endereco: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  complemento: new FormControl(''),
+  username: new FormControl('', [Validators.required, Validators.minLength(3)]),
+  senha: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  confsenha: new FormControl('', [Validators.required, Validators.minLength(6)]),
+})
+  
+
+  submit():void{
+    console.log(`Name = ${this.loginUser.controls['name'].value}`)
+    console.log(`LastName = ${this.loginUser.controls['lastname'].value}`)
+    console.log(`Cpf = ${this.loginUser.controls['cpf'].value}`)
+    console.log(`Telefone = ${this.loginUser.controls['telefone'].value}`)
+    console.log(`Endereco = ${this.loginUser.controls['endereco'].value}`)
+    console.log(`Complemento = ${this.loginUser.controls['complemento'].value}`)
+    console.log(`Username = ${this.loginUser.controls['username'].value}`)
+    console.log(`Senha = ${this.loginUser.controls['senha'].value}`)
+    console.log(`Confsenha = ${this.loginUser.controls['confsenha'].value}`)
+
+    if (this.loginUser.controls['senha'].value !=
+        this.loginUser.controls['confsenha'].value) {
+          alert("SENHAS DIFERENTES! FAVOR DIGITAR SENHAS IGUAIS");
+          return ;
+        }
+        
+  	this.openDialog()
+  }
+  
+  constructor(public dialog: MatDialog) {}
+
+  openDialog() {
+    this.dialog.open(AppComponent, { data:{submit():void{}}
+
+    });
+  }
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      id: 1,
+      
+      
+      
+      name: this.cadastro.controls['name'].value,
+      lastname: this.cadastro.controls['lastname'].value,
+      cpf: this.cadastro.controls['cpf'].value,
+      telephone: this.cadastro.controls['telephone'].value,
+      adress: this.cadastro.controls['endereco'].value,
+      complement: this.cadastro.controls['complemento'].value,
+      username: this.cadastro.controls['username'].value,
+      password: this.cadastro.controls['senha'].value,
+      confsenha: this.cadastro.controls['confsenha'].value
+
+    };
+
+    this.dialog.open(CmpComponent, dialogConfig);
+    
+    ///////////////////////////////////////////////////////////////////////
+    
+    cmp.ts
+    
+   
+    
+    nome:string;
+    sobrenome:string;
+    cpf:string;
+    telefone:string;
+    endereco:string;
+    complemento:string;
+    username: string;
+    senha:string;
+    confsenha:string;
+
+    constructor(
+      
+        private dialogRef: MatDialogRef<CmpComponent>,
+        @Inject(MAT_DIALOG_DATA) data) {
+
+            
+            this.nome = data.nome
+	    this.sobrenome = data.sobrenome
+	    this.cpf = data.cpf
+	    this.telefone = data.telefone
+	    this.endereco = data.endereco
+	    this.complemento = data.complemento
+	     this.username = data.username
+	    this.senha = data.senha
+	    this.confsenha = data.confsenha
+    }
+
+    ngOnInit() {
+     
+        });
+    }
+
+    //save() {
+       // this.dialogRef.close(this.form.value);
+//    }
+
+    close() {
+        this.dialogRef.close();
+    }
+}
+    
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////
+    
+    cmp.html
+    
+
+
+<mat-dialog-content>Nome{{nome}}
+<mat-dialog-content>Sobrenome{{sobrenome}}
+<mat-dialog-content>Cpf{{cpf}}
+<mat-dialog-content>Endereco{{endereco}}
+<mat-dialog-content>Complemento{{complemento}}
+<mat-dialog-content>Username{{username}}
+<mat-dialog-content>Senha{{senha}}
+
+
+ 
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button"(click)="close()">Close</button>
+    
+</mat-dialog-actions>
+    
+    
+    
+    
+    
+
+  }
+}
+
+
+

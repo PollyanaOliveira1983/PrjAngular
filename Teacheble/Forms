@@ -1,0 +1,548 @@
+Forms Controls
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  [x: string]: any;
+  title = 'reactiveforms';
+
+    name: FormControl = new FormControl('')
+    lastname: FormControl = new FormControl('')
+    cpf: FormControl = new FormControl('')
+    telefone: FormControl = new FormControl('')
+    endereco: FormControl = new FormControl('')
+    complemento: FormControl = new FormControl('')
+    username: FormControl = new FormControl('')
+    senha: FormControl = new FormControl('')
+    confsenha: FormControl = new FormControl('')
+
+    submit(): void {
+      console.log(`Name = ${this.name.value}`)
+      console.log(`LastName = ${this.lastname.value}`)
+      console.log(`CPF = ${this.cpf.value}`)
+      console.log(`Telefone = ${this.telefone.value}`)
+      console.log(`Endereco = ${this.endereco.value}`)
+      console.log(`Complemento = ${this.complemento.value}`)
+      console.log(`Username = ${this.username.value}`)
+      console.log(`Senha = ${this.senha.value}`)
+      console.log(`Confsenha= ${this.confsenha.value}`)
+
+     
+
+    }
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+<div class="wrapper">
+<mat-card>
+  <mat-card-title>Cadastro de Clientes</mat-card-title>
+  <mat-card-header>
+  <mat-card-content
+    action="#"
+    id="main-form"
+    (ngSubmit)="submit()"
+
+  >
+  <form>
+    <div class="form-angular row" >
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu nome completo."
+        [formControl]="name"
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['name'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['name'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Sobrenome</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu sobrenome."
+        [formControl]="lastname"
+        >
+       <!--  <mat-error>
+          <span  *ngIf="cadastroCliente.controls['lastname'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['lastname'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu CPF."
+        [formControl]="cpf"
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['cpf'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['cpf'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <div class="form-angular row" >
+      <mat-form-field appearance="fill">
+        <mat-label>Telefone</mat-label>
+        <input
+        type="tel"
+        matInput
+        placeholder="Digite seu telefone."
+        [formControl]="telefone"
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['telefone'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['telefone'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Endereço</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu endreço."
+        [formControl]="endereco"
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['endereco'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['endereco'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Complemento</mat-label>
+        <input
+        type="texto"
+        matInput
+        placeholder="Digite o complemento do endreço."
+        [formControl]="complemento"
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['complemento'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['complemento'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>-->
+      </mat-form-field>
+    </div>
+
+    <div class="form-angular row" >
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input
+        type="username"
+        matInput
+        placeholder="Digite seu username."
+        [formControl]="username"
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['username'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['username'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input
+        type="password"
+        matInput
+        placeholder="Digite sua senha."
+        [formControl]="senha"
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['senha'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['senha'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Confirme sua senha</mat-label>
+        <input
+        type="password"
+        matInput
+        placeholder="Confirme a senha digitada."
+        [formControl]="confsenha"
+        >
+       <!--  <mat-error>
+          <span  *ngIf="cadastroCliente.controls['confsenha'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['confsenha'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <div class="form-angular row" >
+      <button
+      mat-stroked-button
+      type="submit"
+      color="accent"
+      class="grow"
+      >Cadastrar</button>
+    </div>
+  </form>
+  </mat-card-content>
+  </mat-card-header>
+</mat-card>
+</div>
+
+/////////////////////////////////////////////////////////////////////////////////////////
+Form Group
+
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+
+  title = 'reactiveforms';
+
+   cadastroCliente: FormGroup = new FormGroup({
+    name: new FormControl('' , /* [Validators.required, Validators.minLength(3)] */),
+    lastname: new FormControl('', /* [Validators.required, Validators.minLength(3)]*/),
+    cpf: new FormControl('', /* [Validators.required, Validators.minLength(3)] */),
+    telephone: new FormControl ('', /* [Validators.required, Validators.minLength(3)] */),
+    adress: new FormControl('', /* [Validators.required, Validators.minLength(3)] */),
+    complement: new FormControl('', /* [Validators.required, Validators.minLength(3)] */),
+    username: new FormControl('', /* [Validators.required, Validators.minLength(3)] */),
+    password: new FormControl('', /* [Validators.required, Validators.minLength(3)] */),
+    confpassword: new FormControl('', /* [Validators.required, Validators.minLength(3)] */),
+  })
+
+  constructor(
+
+    private snack: MatSnackBar
+
+
+  ){}
+
+  submit():void{
+    console.log(`Name = ${this.cadastroCliente.controls['name'].value}`)
+    console.log(`LastName = ${this.cadastroCliente.controls['lastname'].value}`)
+    console.log(`CPF = ${this.cadastroCliente.controls['cpf'].value}`)
+    console.log(`Telephone = ${this.cadastroCliente.controls['telephone'].value}`)
+    console.log(`Adress = ${this.cadastroCliente.controls['adress'].value}`)
+    console.log(`Complement = ${this.cadastroCliente.controls['complement'].value}`)
+    console.log(`Username = ${this.cadastroCliente.controls['username'].value}`)
+    console.log(`Password = ${this.cadastroCliente.controls['password'].value}`)
+    console.log(`Confpassword= ${this.cadastroCliente.controls['confpassword'].value}`)
+
+    this.snack.open('Cadastro efetuado com sucesso!', 'ok', {duration: 2000} )
+  }
+
+
+}
+
+
+<div class="wrapper">
+<mat-card>
+  <mat-card-title>Cadastro de Clientes</mat-card-title>
+  <mat-card-header>
+  <mat-card-content
+    action="#"
+    id="main-form"
+    (ngSubmit)="submit()"
+    [formGroup]="cadastroCliente"
+
+  >
+  <form>
+    <div class="form-angular row" >
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu nome completo."
+        formControlName="name"
+
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['name'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['name'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearanimport { Component } from '@angular/core';
+      import { FormGroup, FormControl } from '@angular/forms';
+      import { MatSnackBar } from '@angular/material/snack-bar';
+
+      @Component({
+        selector: 'app-root',
+        templateUrl: './app.component.html',
+        styleUrls: ['./app.component.css']
+      })
+      export class AppComponent {
+
+        title = 'reactiveforms';
+
+         cadastroCliente: FormGroup = new FormGroup({
+          name: new FormControl('' , /* [Validators.required, Validators.minLength(3)] */),
+          lastname: new FormControl('', /* [Validators.required, Validators.minLength(3)]*/),
+          cpf: new FormControl('', /* [Validators.required, Validators.minLength(3)] */),
+          telephone: new FormControl ('', /* [Validators.required, Validators.minLength(3)] */),
+          adress: new FormControl('', /* [Validators.required, Validators.minLength(3)] */),
+          complement: new FormControl('', /* [Validators.required, Validators.minLength(3)] */),
+          username: new FormControl('', /* [Validators.required, Validators.minLength(3)] */),
+          password: new FormControl('', /* [Validators.required, Validators.minLength(3)] */),
+          confpassword: new FormControl('', /* [Validators.required, Validators.minLength(3)] */),
+        })
+
+        constructor(
+
+          private snack: MatSnackBar
+
+
+        ){}
+
+        submit():void{
+          console.log(`Name = ${this.cadastroCliente.controls['name'].value}`)
+          console.log(`LastName = ${this.cadastroCliente.controls['lastname'].value}`)
+          console.log(`CPF = ${this.cadastroCliente.controls['cpf'].value}`)
+          console.log(`Telephone = ${this.cadastroCliente.controls['telephone'].value}`)
+          console.log(`Adress = ${this.cadastroCliente.controls['adress'].value}`)
+          console.log(`Complement = ${this.cadastroCliente.controls['complement'].value}`)
+          console.log(`Username = ${this.cadastroCliente.controls['username'].value}`)
+          console.log(`Password = ${this.cadastroCliente.controls['password'].value}`)
+          console.log(`Confpassword= ${this.cadastroCliente.controls['confpassword'].value}`)
+
+          this.snack.open('Cadastro efetuado com sucesso!', 'ok', {duration: 2000} )
+        }
+
+
+      }
+      ce="fill">
+        <mat-label>Sobrenome</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu sobrenome."
+        formControlName="lastname"
+
+        >
+       <!--  <mat-error>
+          <span  *ngIf="cadastroCliente.controls['lastname'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['lastname'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu CPF."
+        formControlName="cpf"
+
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['cpf'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['cpf'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <div class="form-angular row" >
+      <mat-form-field appearance="fill">
+        <mat-label>Telefone</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu telefone."
+        formControlName="telephone"
+
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['telefone'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['telefone'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Endereço</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu endreço."
+        formControlName="adress"
+
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['endereco'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['endereco'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Complemento</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite o complemento do endreço."
+        formControlName="complement"
+
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['complemento'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['complemento'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>-->
+      </mat-form-field>
+    </div>
+
+    <div class="form-angular row" >
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu username."
+        formControlName="username"
+
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['username'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['username'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input
+        type="password"
+        matInput
+        placeholder="Digite sua senha."
+        formControlName="password"
+
+        >
+        <!-- <mat-error>
+          <span  *ngIf="cadastroCliente.controls['senha'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['senha'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Confirme sua senha</mat-label>
+        <input
+        type="password"
+        matInput
+        placeholder="Confirme a senha digitada."
+        formControlName="confpassword"
+
+        >
+       <!--  <mat-error>
+          <span  *ngIf="cadastroCliente.controls['confsenha'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['confsenha'].getError('required')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <div class="form-angular row" >
+      <button
+      mat-stroked-button
+      type="submit"
+      color="accent"
+      class="grow"
+      >Cadastrar</button>
+    </div>
+  </form>
+  </mat-card-content>
+  </mat-card-header>
+</mat-card>
+</div>
+
+//////////////////////////////////////////////////////
+
+FORM ARRAY
+
+
+////////////////////////////////////////////////////////
+FORM BUILDER
+

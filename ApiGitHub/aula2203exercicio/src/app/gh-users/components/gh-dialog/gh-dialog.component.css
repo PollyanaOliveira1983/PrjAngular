@@ -1,0 +1,23 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 700px;
+  padding: 10px 15px;
+
+}
+
+.img-perfil{
+  height: 460px;
+  width: 100%;
+}
+
+.card-repositorio{
+  background-color:rgb(215, 236, 215);;
+}
+
+a{
+  font-family: 'Courier New', Courier, monospace;
+  color: #000;
+}

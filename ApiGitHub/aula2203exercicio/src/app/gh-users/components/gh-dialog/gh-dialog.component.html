@@ -1,0 +1,61 @@
+<mat-card class="container">
+<h2 mat-dialog-title>Dados de {{username}}</h2>
+<div mat-dialog-content>
+  <!-- <p *ngIf="user != null">{{ user | json }}</p> -->
+  <mat-progress-spinner
+    color="accent"
+    mode="indeterminate"
+    *ngIf="user == null; else content"
+  >
+  </mat-progress-spinner>
+  <ng-template #content>
+    <div class="img-perfil">
+      <img [src]="user?.avatar_url" alt="Foto de perfil do usuário no github">
+    </div>
+      <p>Nome:
+      <a [href]="user?.html_url" target="_blank">
+        {{user?.name}}</a>
+      </p>
+      <p>Usuário:
+        {{user?.login}}
+      </p>
+      <p>Bio:
+        {{user?.bio}}
+      </p>
+      <p>Localização:
+        <a [href]="user?.html_url" target="_blank">
+          {{user?.location}}</a>
+      </p>
+      <p>Atualizado em:
+        <a [href]="user?.html_url" target="_blank">
+          {{user?.updated_at}}</a>
+      </p>
+      <p>Conta criada em:
+        <a [href]="user?.html_url" target="_blank">
+          {{user?.created_at}}</a>
+      </p>
+      <h3>Repositórios</h3>
+    <div class="card-repositorio" *ngFor="let item of repositorio">
+      <p>Nome:
+        <a [href]="item?.html_url" target="_blank">
+          {{item?.name}}</a>
+      </p>
+      <p>Descrição:
+          {{item?.description}}
+      </p>
+      <p>Forks:
+        {{item?.forks_count}}
+      </p>
+      <p>Criado:
+        {{searchData(item.created_at)}}
+      </p>
+      <p>Última atualização:
+        {{searchData(item.updated_at)}}
+      </p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close appearance="accent">Fechar</button>
+  </div>
+  </ng-template>
+</div>
+</mat-card>

@@ -1,0 +1,240 @@
+
+<div class="wrapper">
+  <mat-card>
+    <mat-card-title>Cadastro de Clientes</mat-card-title>
+    <mat-card-content>
+    <form
+      action="#"
+      id="main-form"
+      (ngSubmit)="submit()"
+      #form="ngForm"
+    >
+
+    <div class="form-angular row" >
+      <mat-form-field appearance="legacy">
+        <mat-label>Nome</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Digite seu nome completo."
+          [(ngModel)]="name"
+          name="name"
+          autocomplete="false"
+          required
+          minlength="3"
+          #inputName="ngModel"
+        >
+        <mat-error *ngIf="inputName.invalid">
+          <span *ngIf="inputName.errors?.['required']">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="inputName.errors?.['minlength']">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Sobrenome</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Digite seu sobrenome."
+          [(ngModel)]="lastname"
+          name="lastname"
+          autocomplete="false"
+          required
+          minlength="3"
+          #inputLastName="ngModel"
+        >
+        <mat-error *ngIf="inputLastName.invalid">
+          <span *ngIf="inputLastName.errors?.['required']">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="inputLastName.errors?.['minlength']">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>CPF</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Digite seu CPF."
+          [(ngModel)]="cpf"
+          name="cpf"
+          autocomplete="false"
+          required
+          minlength="11"
+          #inputCpf="ngModel"
+        >
+        <mat-error *ngIf="inputCpf.invalid">
+          <span *ngIf="inputCpf.errors?.['required']">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="inputCpf.errors?.['minlength']">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+
+    <div class="form-angular row" >
+      <mat-form-field appearance="legacy">
+        <mat-label>Telefone</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Digite seu telefone."
+          [(ngModel)]="telephone"
+          name="telephone"
+          autocomplete="false"
+          required
+          minlength="10"
+          #inputTelephone="ngModel"
+        >
+        <mat-error *ngIf="inputTelephone.invalid">
+          <span *ngIf="inputTelephone.errors?.['required']">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="inputTelephone.errors?.['minlength']">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Endereço</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Digite seu endreço."
+            [(ngModel)]="adress"
+            name="adress"
+            autocomplete="false"
+            required
+            minlength="3"
+            #inputAdress="ngModel"
+          >
+          <mat-error *ngIf="inputAdress.invalid">
+            <span *ngIf="inputAdress.errors?.['required']">
+              Você não preencheu o campo corretamente.
+            </span>
+            <span *ngIf="inputAdress.errors?.['minlength']">
+              Este campo é obrigatório!
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Complemento</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Digite o complemento do endreço."
+            [(ngModel)]="complement"
+            name="complement"
+            autocomplete="false"
+            required
+            minlength="3"
+            #inputComplement="ngModel"
+          >
+          <mat-error *ngIf="inputComplement.invalid">
+            <span *ngIf="inputComplement.errors?.['required']">
+              Você não preencheu o campo corretamente.
+            </span>
+            <span *ngIf="inputComplement.errors?.['minlength']">
+              Este campo é obrigatório!
+            </span>
+          </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form-angular row" >
+      <mat-form-field appearance="legacy">
+        <mat-label>Username</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Digite seu usuário."
+          [(ngModel)]="username"
+          name="username"
+          autocomplete="false"
+          required
+          minlength="3"
+          #inputUsername="ngModel"
+        >
+        <mat-error *ngIf="inputUsername.invalid">
+          <span *ngIf="inputUsername.errors?.['required']">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="inputUsername.errors?.['minlength']">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Senha</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Digite sua senha."
+          [(ngModel)]="password"
+          name="password"
+          autocomplete="false"
+          required
+          minlength="3"
+          #inputPassword="ngModel"
+        >
+        <mat-error *ngIf="inputPassword.invalid">
+          <span *ngIf="inputPassword.errors?.['required']">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="inputPassword.errors?.['minlength']">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Confirme sua senha</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="Confirme a senha digitada."
+          [(ngModel)]="confpassword"
+          name="confpassword"
+          autocomplete="false"
+          required
+          minlength="3"
+          #inputConfpassword="ngModel"
+        >
+        <mat-error *ngIf="inputConfpassword.invalid">
+          <span *ngIf="inputConfpassword.errors?.['required']">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="inputConfpassword.errors?.['minlength']">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-angular row" >
+      <button
+        mat-stroked-button
+        type="submit"
+        color="accent"
+        class="grow"
+        [disabled]="form.invalid"
+        (click)="submit"
+      >Cadastrar</button>
+    </div>
+    </form>
+    </mat-card-content>
+  </mat-card>
+  </div>

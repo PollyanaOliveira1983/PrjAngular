@@ -1,0 +1,136 @@
+<div class="container">
+ <div>
+    <mat-card-header>
+      <mat-card-title>Cadastre-se!</mat-card-title>
+    </mat-card-header>
+  <div class="container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Cadastre-se</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form
+        action="#"
+        id="main-form"
+        (ngSubmit)="submit()"
+        [formGroup]="personalData"
+        >
+
+          <div class="form-row">
+            <mat-form-field appearance="fill">
+              <mat-label>Nome</mat-label>
+              <input
+              type="text"
+              matInput
+              placeholder="Seu Nome..."
+              formControlName="name"
+              >
+              <mat-error>
+                <span *ngIf="personalData.controls['name'].getError('required')">
+                  Este campor é obrigatório!
+                </span>
+                <span *ngIf="personalData.controls['name'].getError('minlength')">
+                  Faltam caracteres (No mínino 3)
+                </span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Sobrenome</mat-label>
+              <input
+              type="text"
+              matInput
+              placeholder="Seu Sobrenome..."
+              formControlName="lastname"
+              >
+              <mat-error>
+                <span *ngIf="personalData.controls['lastname'].getError('required')">
+                  Este campor é obrigatório!
+                </span>
+                <span *ngIf="personalData.controls['lastname'].getError('minlength')">
+                  Faltam caracteres (No mínino 3)
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row col">
+            <mat-form-field appearance="fill" class="grow">
+              <mat-label>E-mail</mat-label>
+              <input
+              type="email"
+              matInput
+              placeholder="Email"
+              formControlName="email"
+              >
+              <mat-error>
+                <span *ngIf="personalData.controls['email'].getError('required')">
+                  Este campor é obrigatório!
+                </span>
+                <span *ngIf="personalData.controls['email'].getError('email')">
+                  Isso não é um e-mail valido!
+                </span>
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+          <div class="form-row col">
+            <mat-form-field appearance="fill" class="grow">
+              <mat-label>Selecione seu Sexo</mat-label>
+              <mat-select formControlName="sex">
+                <mat-option value="M">
+                  Masculino
+                </mat-option>
+                <mat-option value="F">
+                  Feminino
+                </mat-option>
+              </mat-select>
+              <mat-error>
+                <span *ngIf="personalData.controls['sex'].getError('required')">
+                  Este campor é obrigatório!
+                </span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div
+          formArrayName="tels">
+            <mat-form-field
+            appearance="fill"
+            class="grow"
+            *ngFor="let c of tels.controls; let i = index"
+            >
+              <mat-label>Contato</mat-label>
+              <input
+              type="tel"
+              matInput
+              placeholder="Digite seu número de telefone"
+              [formControlName]="i"
+              >
+            </mat-form-field>
+
+            <button
+            mat-icon-button
+            color=" warn"
+            type="button"
+            (click)="newContact()"
+            >
+            <mat-icon>add</mat-icon>
+            </button>
+          </div>
+
+          <div class="form-row col">
+           <button
+           mat-raised-button
+           type="submit"
+           color="accent"
+           class="grow"
+           [disabled]="personalData.invalid"
+           >Cadastrar</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

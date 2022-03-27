@@ -1,0 +1,259 @@
+<div class="wrapper">
+<mat-card>
+  <mat-card-title>Cadastro de Clientes</mat-card-title>
+  <mat-card-content
+    action="#"
+    id="main-form"
+    (ngSubmit)="submit()"
+    [formGroup]="cadastroCliente"
+
+  >
+  <form>
+    <div class="form-angular row" >
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu nome completo."
+        formControlName="name"
+        >
+        <mat-error>
+          <span  *ngIf="cadastroCliente.controls['name'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['name'].getError('minlength')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Sobrenome</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu sobrenome."
+        formControlName="lastname"
+
+        >
+       <mat-error>
+          <span  *ngIf="cadastroCliente.controls['lastname'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['lastname'].getError('minlength')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu CPF."
+        formControlName="cpf"
+
+        >
+        <mat-error>
+          <span  *ngIf="cadastroCliente.controls['cpf'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['cpf'].getError('minlength')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    
+	
+    <div class="form-angular row" >
+      <mat-form-field appearance="fill">
+        <mat-label>Telefone</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu telefone."
+        formControlName="telephone"
+
+        >
+        <mat-error>
+          <span  *ngIf="cadastroCliente.controls['telefone'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>mat-form-field appearance="fill">
+        <mat-label>Endereço
+          <span *ngIf="cadastroCliente.controls['telefone'].getError('minlength')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Endereço</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu endreço."
+        formControlName="adress"
+
+        >
+        <mat-error>
+          <span  *ngIf="cadastroCliente.controls['endereco'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['endereco'].getError('minlength')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Complemento</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite o complemento do endreço."
+        formControlName="complement"
+        >
+
+      </mat-form-field>
+    </div>
+
+    <div class="form-angular row" >
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input
+        type="text"
+        matInput
+        placeholder="Digite seu username."
+        formControlName="username"
+
+        >
+        <mat-error>
+          <span  *ngIf="cadastroCliente.controls['username'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['username'].getError('minlength')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input
+        type="password"
+        id="senha"
+        matInput
+        placeholder="Digite sua senha."
+        formControlName="password"
+
+        >
+        <mat-error>
+          <span  *ngIf="cadastroCliente.controls['senha'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['senha'].getError('minlength')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Confirme sua senha</mat-label>
+        <input
+        oninput="validarsenha(this)"
+        type="password"
+        id="senha1"
+        matInput
+        placeholder="Confirme a senha digitada."
+        formControlName="confpassword"
+
+        >
+       <mat-error>
+          <span  *ngIf="cadastroCliente.controls['confsenha'].getError('required')">
+            Você não preencheu o campo corretamente.
+          </span>
+          <span *ngIf="cadastroCliente.controls['confsenha'].getError('minlength')">
+            Este campo é obrigatório!
+          </span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-angular row" >
+      <button
+      mat-stroked-button
+      type="submit"
+      color="accent"
+      class="grow"
+      >Cadastrar</button>
+    </div>
+  </form>
+  </mat-card-content>
+</mat-card>
+</div>
+
+
+
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+export class AppComponent {
+
+    cadastroCliente: FormGroup = new FormGroup({
+    name: new FormControl('' ,[Validators.required, Validators.minLength(3)]),
+    lastname: new FormControl('',[Validators.required, Validators.minLength(3)]),
+    cpf: new FormControl('',[Validators.required, Validators.minLength(3)]),
+    telephone: new FormControl ('',[Validators.required, Validators.minLength(3)]),
+    adress: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    complement: new FormControl(''),
+    username: new FormControl('',[Validators.required, Validators.minLength(3)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    confpassword: new FormControl('',[Validators.required, Validators.minLength(3)]),
+  })
+
+  constructor(
+
+    private snack: MatSnackBar,
+
+
+  ){}
+
+  submit():void{
+    console.log(`Name = ${this.cadastroCliente.controls['name'].value}`)
+    console.log(`LastName = ${this.cadastroCliente.controls['lastname'].value}`)
+    console.log(`CPF = ${this.cadastroCliente.controls['cpf'].value}`)
+    console.log(`Telephone = ${this.cadastroCliente.controls['telephone'].value}`)
+    console.log(`Adress = ${this.cadastroCliente.controls['adress'].value}`)
+    console.log(`Complement = ${this.cadastroCliente.controls['complement'].value}`)
+    console.log(`Username = ${this.cadastroCliente.controls['username'].value}`)
+    console.log(`Password = ${this.cadastroCliente.controls['password'].value}`)
+    console.log(`Confpassword= ${this.cadastroCliente.controls['confpassword'].value}`)
+
+    this.snack.open('Cadastro efetuado com sucesso!', 'ok', {duration: 2000} )
+  }
+  //////////////////////////// VALIDAR SENHA ///////////////////////////////////////////////////
+  /* function validarsenha({ input, senha }: { input: { valueOf: any; setCustomValidity: any; }; senha: string; }): void {
+    if(input.valueOf !== senha){
+      input.setCustomValidity('Senha não são iguais, favor repita!');
+    }else{
+      input.setCustomValidity('');
+    }
+
+  } */
+
+}
+
+
+
+https://www.youtube.com/watch?v=QJWC-WHqpkY
+

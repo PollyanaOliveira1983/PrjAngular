@@ -1,0 +1,798 @@
+
+ng new NomeProjeto (comando para criar arquivo angular)
+ng serve (para gerar o no navegador)
+ng generate component NomeComponente (comando para criar componente)
+ng g c NomeComponente (comando para criar simplificado)
+
+um Guia pro Git: https://rogerdudler.github.io/git-guide/index.pt_BR.html 
+
+
+"javascript.inlayHints.parameterNames.enabled": "literals",
+  "typescript.inlayHints.parameterNames.enabled": "literals",
+Patrick Cavalcante Gomes09:12
+
+pra baixar no chrome: https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh/related?hl=pt-BR
+
+Java Full Stack09:18
+https://material.angular.io/
+
+
+Aula de hoje: Data Binding
+
+
+ng add @angular/material
+
+Java Full Stack09:27
+https://gist.github.com/renato3x/97578568141c5d27275084de2e12f864
+
+Java Full Stack09:30
+https://material.angular.io/
+
+//////ng g m material/material
+
+Java Full Stack09:33
+https://gist.github.com/renato3x/97578568141c5d27275084de2e12f864
+
+
+https://gist.github.com/renato3x/97578568141c5d27275084de2e12f864
+
+npm uninstall @angular/material
+ng add @angular/material
+
+
+Como é que para o servidor, mesmo?
+Ctrl c no terminal?
+
+npx ng serve --disableHostcheck=true
+
+------------------------------------------------------------------------------------------------------------------
+function Num() {
+    var numero = document.getElementById('num');
+    numero = 0;
+
+    document.getElementById('menos').click(function() {
+      numero--;
+    });
+    document.getElementById('mais').click(function() {
+      numero++;
+    });
+  }
+  
+  h3{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+<h3>Exercicio 03</h3>
+<div class="example-button-row">
+  <button mat-mini-fab> -1 </button>
+  
+  <button mat-mini-fab> +1 </button>
+
+</div>
+
+
+
+div{
+    width: 50VW;
+    height: 50vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button{
+    font-size: 50px;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+#mais{
+    background-color: #119911;
+}
+
+p{
+    color: white;
+    font-size: 70px;
+    font-weight: bold;
+}
+
+
+
+  
+<div>
+  <button mat-fab color="warn" (click)="decrementa()">-</button>
+  <p>{{numero}}</p>
+  <button mat-fab id="mais" (click)="acrescenta()">+</button>
+</div>
+
+
+
+  
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+export class AppComponent {
+  title = 'exer002-contador';
+  numero : number = 0;
+
+  acrescenta(): void {
+    this.numero++
+  }
+
+  decrementa(): void{
+    if(this.numero > 0){      
+      this.numero--
+    }
+  }
+}
+
+https://www.youtube.com/watch?v=xueMfCC42LU
+
+
+https://github.com/RudeBoyOne/exercicio002_Angular-SoulCodeJavaFullStack
+
+-----------------------------------------------------------------------------------------------------------------------------
+Aula 08/03
+app.component.html
+
+Uma aplicação seria tipo um form, que dependendo do dado que o usuário colocasse no input acima o de baixo alteraria seu tipo para ir adequando o form 
+
+<!-- <button mat-button color="primary">Clique em mim</button> -->
+
+<!-- Interpolação colocar o dado na tela do usuario -->
+ <div class="wrapper">
+<!--
+<h1>{{title}}</h1>
+<p>{{title.length}} {{'String aleatória'}} {{5 > 9}}</p>
+<p>{{'abc'.toUpperCase() }}</p>
+ -->
+<!-- Property Binding passar algum codigo js para dentro do html-->
+<!-- <mat-form-field>
+  <mat-label>Username</mat-label>
+  <input matInput [type]="tipo" [placeholder]="'Alguma coisa'" [disabled]="8 > 7">
+</mat-form-field> -->
+
+<!-- Event Binding ouvir o evento de click-->
+<!-- <button mat-button color="accent" (click)="alertar()">Clique e tera uma surpresa >:)</button>
+<button mat-button color="accent" (click)="alertar2($event)">Clique e tera uma surpresa >:)</button> -->
+
+<!-- Two Way Data Binding -->
+
+<mat-form-field>
+  <mat-label></mat-label>
+  <input matInput [type]="tipo" placeholder="Digite algo">
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Tipo do Input Acima</mat-label>
+  <input matInput type="text" placeholder="Digite o tipo do input" [(ngModel)]="tipo">
+</mat-form-field>
+
+</div>
+
+component.css
+
+.wrapper{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'aula0803';
+
+  tipo: string = ''
+
+ /*  alertar(){
+    alert('Você cliclou no botão')
+  }
+
+  alertar2(e: any){
+    console.log('Evento executado!')
+    console.log(e)
+  } */
+
+
+}
+
+
+module.ts
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { FormsModule } from '@angular/forms'
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+///////////////////////////////////////////////////////////////////////////
+
+aula da tarde
+app.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+
+export class AppComponent {
+  title = 'aula0803';
+
+  tipo: string = 'text'
+
+  cardConteudo: string = 'Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais precisa. Grosso modo, pode ser entendido como manifestação linguística das ideia<!-- <button mat-button color="accent" (click)="alertar()">Botão</button> -->s de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos linguísticos e culturais. Seu tamanho é variável. '
+
+  alertar(){
+    alert('Você cliclou no botão')
+  }
+  alertar2(e: any){
+    console.log('Evento executado!')
+    console.log(e)
+  }
+
+
+}
+
+app component.html
+
+<div class="wrapper">
+ <!--  <app-card titulo="Titulo 1" subtitulo="Meu subtitulo" [conteudo]="cardConteudo" background="purple" ></app-card>
+  <app-card titulo="Carros" subtitulo="Eu gosto de carros" conteudo="carro"></app-card>
+  <app-card titulo="Carros" subtitulo="Eu gosto de carros" conteudo="carro"></app-card> -->
+  <!-- <app-btn (btnClickEvent)="alertar()"></app-btn> -->
+
+  <app-btn (btnClickEvent)="alertar2($event)"></app-btn>
+</div>
+
+app component.css
+
+.wrapper{
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+
+}
+
+///////////////////////////////////////////////////////////////////////////////
+cardcomponente.ts
+import { LowerCasePipe } from '@angular/common';
+import { Component, Input } from '@angular/core';
+
+
+@Component({
+  selector: 'app-card',
+  templateUrl: './card.component.html',
+  styleUrls: ['./card.component.css']
+})
+export class CardComponent {
+
+    @Input()
+  titulo: string = 'Titulo'
+  @Input()
+  subtitulo: string = 'Subtitulo'
+  @Input()
+  conteudo: string = 'Conteudo'
+  @Input()
+  background: string = '#607d8b'
+
+
+}
+
+cardcomponente.html
+
+
+<mat-card [style]="'background-color:' + background + ';'">
+  <mat-card-header>
+    <mat-card-title>{{titulo}}</mat-card-title>
+    <mat-card-subtitle>{{subtitulo}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{conteudo}}
+    </p>
+  </mat-card-content>
+
+</mat-card>
+
+
+cardcomponente.css
+
+.app-card{
+
+ max-width: 350px;
+ background: rgb(194, 155, 194);
+}
+
+btn.component.ts
+
+import { Component , Output, EventEmitter} from '@angular/core';
+
+@Component({
+  selector: 'app-btn',
+  templateUrl: './btn.component.html',
+  styleUrls: ['./btn.component.css']
+})
+export class BtnComponent {
+  /*envia dados para fora do componente*/
+  @Output()
+  btnClickEvent: EventEmitter<any> = new EventEmitter<any>()
+
+  emitirEvento(): void{
+    this.btnClickEvent.emit('btnClickEvent executado')
+  }
+}
+
+
+
+btn.component.html
+
+<h1>Clique aqui</h1>
+  <button (click)="emitirEvento()"mat-fab> Clique </button>
+
+
+https://fonts.google.com/specimen/Montserrat?preview.text=$24.99&preview.text_type=custom&query=Montserrat
+
+-----------------------------------------------------------------------------------------------
+
+Aula 09/03
+
+variaveis de templates acessam e guardam as informaçoes no html
+
+cmp.component.html
+<p>{{numero}}</p>
+
+import { Component, Input} from '@angular/core';
+
+cmp.component.ts
+
+@Component({
+  selector: 'cmp',
+  templateUrl: './cmp.component.html',
+  styleUrls: ['./cmp.component.css']
+})
+export class CmpComponent {
+
+  title: string = 'CmdComponent'
+  used: boolean = true
+  prop: number = 10
+
+  @Input()
+  numero: number = 0
+
+  darOi(): string{
+    return 'Olá, mundo!'
+  }
+
+  metodo(): number{
+    return this.prop ** 5
+  }
+  
+  revisao.component.html
+  
+  <mat-card [style] = "'max-width: 250px;' + 'background-color: ' + background + ';'">
+<mat-card-header>
+  <mat-card-title>{{tituloCard}}</mat-card-title>
+  <mat-card-content>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore voluptate laudantium repudiandae nihil, aliquam dolorem aliquid consectetur. Inventore ex, quod architecto sapiente, perferendis pariatur, recusandae explicabo obcaecati error laudantium exercitationem!
+    </p>
+    <button mat-button color="basic"(click)="emitirEventoPersonalizado()">Salvar</button>
+  </mat-card-content>
+</mat-card-header>
+</mat-card>
+
+
+revisao.component.ts
+
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-revisao',
+  templateUrl: './revisao.component.html',
+  styleUrls: ['./revisao.component.css']
+})
+export class RevisaoComponent  {
+
+  @Input()
+  tituloCard: string = 'Algum Titulo'
+
+  @Input()
+  background: string = 'green'
+
+  @Output()
+  eventoPersonalizado: EventEmitter<any> = new EventEmitter<any>()
+
+  emitirEventoPersonalizado():void{
+    this.eventoPersonalizado.emit({x: 'Prop1', y: 566, z: true, w:[1, 2, 3]})
+  }
+
+}
+
+
+}
+
+app-routing.module.ts
+
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+
+
+app-routing.module.css
+
+.wrapper{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+
+}
+
+
+app-routing.module.html
+
+<!--
+<app-revisao tituloCard="Carros"></app-revisao>
+
+<app-revisao [tituloCard]="'Motos'"></app-revisao>
+<!-- property biding
+
+<app-revisao
+ [tituloCard]="title"
+ background= "purple"
+  (eventoPersonalizado)="salvar($event)"
+ ></app-revisao>
+ -->
+
+ <div class="wrapper">
+   <mat-form-field appearance="standard">
+     <mat-label>Username</mat-label>
+     <input type="text" matInput #inputTexto>
+   </mat-form-field>
+   <p>{{inputTexto.value}}</p>
+   <p>{{inputTexto.value.length}}</p>
+
+   <cmp [numero]="5"></cmp>
+   <cmp [numero]="7"></cmp>
+   <cmp [numero]="13"></cmp>
+   <cmp [numero]="26" #cmp4></cmp>
+   <cmp [numero]="50"></cmp>
+   <cmp [numero]="63"></cmp>
+   <cmp [numero]="1"></cmp>
+
+
+   <!-- <cmp #cmpt></cmp> -->
+   <!-- <span>{{cmpt.darOi()}}</span>
+   <span>{{cmpt.metodo()-5}}</span>
+   <span>{{cmpt.title}}</span> -->
+ </div>
+
+
+app-routing.module.ts
+
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { CmpComponent } from './cmp/cmp.component';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'aula0903';
+
+  /* @ViewChild(CmpComponent)
+  cmp!: CmpComponent */
+
+  /* @ViewChild('cmp4')
+  cmp!: CmpComponent */
+
+  @ViewChild('inputTexto')
+  cmp!: ElementRef
+
+  ngAfterViewInit(){
+    console.log(this.cmp.nativeElement.value)
+  }
+
+  /* ngAfterViewInit(){
+    console.log(this.cmp.numero)
+  } */
+
+  salvar(evento:any):void{
+    alert(`Você salvou! Valor de Z = ${evento.z}`)
+    console.log(evento)
+  }
+}
+
+app.module.ts
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { RevisaoComponent } from './revisao/revisao.component';
+import { CmpComponent } from './cmp/cmp.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    RevisaoComponent,
+    CmpComponent,
+
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+material.module.ts
+
+import { NgModule } from '@angular/core'
+
+//material
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatBadgeModule } from '@angular/material/badge'
+import { MatButtonModule } from '@angular/material/button'
+import { MatButtonToggleModule } from '@angular/material/button-toggle'
+import { MatCardModule } from '@angular/material/card'
+import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatChipsModule } from '@angular/material/chips'
+import { MatCommonModule } from '@angular/material/core'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatDividerModule } from '@angular/material/divider'
+import { MatExpansionModule } from '@angular/material/expansion'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatGridListModule } from '@angular/material/grid-list'
+import { MatIconModule } from '@angular/material/icon'
+import { MatInputModule } from '@angular/material/input'
+import { MatListModule } from '@angular/material/list'
+import { MatMenuModule } from '@angular/material/menu'
+import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatRadioModule } from '@angular/material/radio'
+import { MatRippleModule } from '@angular/material/core'
+import { MatSelectModule } from '@angular/material/select'
+import { MatSidenavModule } from '@angular/material/sidenav'
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { MatSliderModule } from '@angular/material/slider'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatSortModule } from '@angular/material/sort'
+import { MatStepperModule } from '@angular/material/stepper'
+import { MatTableModule } from '@angular/material/table'
+import { MatTabsModule } from '@angular/material/tabs'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatTreeModule } from '@angular/material/tree'
+
+@NgModule({
+  exports: [
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatCommonModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatSliderModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatStepperModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTreeModule
+  ]
+})
+export class MaterialModule {
+
+}
+----------------------------------------------------------------------------------------------------------
+
+Aula 10/03
+
+Diretivas permite manipular o DOM
+
+Asdiretivas são marcadores em um elemento DOM(como um atributo)que informama o Angular para anexar um comportamento especificadoa um elemento existente.O propósito da diretiva é fornecer meios para que possamos manipular o DOM ou estender as funcionalidades do
+elemento no qual a diretiva terá ação,como por exemplo alterar o seu conteúdo,estilo,visibilidade etc..,
+dependendo da necessidade da funcionalidade a ser desenvolvida.Asdiretivas aumentam ainda mais a interatividade e performance de um website para o usuário.
+
+Diretivas estruturais e diretivas de atributo
+
+Operador Ternário" = O operador condicional (ternário) é o único operador JavaScript que possui três operandos. Este operador é frequentemente usado como um atalho para a instrução if.
+
+O que é injeção de dependência no Angular?
+De acordo com a documentação oficial do Angular , injeção de dependência é “um padrão de design no qual uma classe solicita dependências de fontes externas, em vez de do que criá-los. Resumindo, a injeção de dependência angular visa separar a implementação de serviços dos componentes. Isso facilita o teste, a substituição e a alteração dos serviços sem afetar os componentes dependentes desses serviços.
+
+
+Variáveis ​​de templates --A Variavel de template do angular por debaixo dos panos ela se comporta como um: document. getElementById(); ? Ou apenas elas funcionam para elementos do tipo input? Elas servem para qualquer elemento, por exemplo, uma div e não apenas para elemento de input.
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+AUla 11/03
+https://loja.electrolux.com.br/lavadora-compacta-lac12-com-dispenser-autolimpante-cesto-inox-electrolux/p?idsku=2002554&utm_source=google&utm_campaign=googlepla&utm_medium=shopping&gclid=CjwKCAiAg6yRBhBNEiwAeVyL0EgW1X2YxQWnyzfI4KcG2P5ry9y8lHHkPd-rsxYeAP7_vs17HL-7sBoC7XoQAvD_BwE
+
+anya Pinheiro Dias13:56
+https://thecodingpie.medium.com/how-to-build-a-todo-list-app-with-javascript-and-local-storage-a884f4ea3ec
+Sanya Pinheiro Dias13:58
+https://www.youtube.com/watch?v=ykuD2QOZkhc&ab_channel=CodingNepal
+
+Vídeo 1 
+Iniciando com Angular - Angular para iniciantes
+https://www.youtube.com/watch?v=fOVsQVHey74&ab_channel=F%C3%A1bricadeC%C3%B3digo
+Sanya Pinheiro Dias20:22
+Vídeo 2
+Criando a navegação da aplicação - Angular para iniciantes
+https://www.youtube.com/watch?v=f1db0qnL3sc
+VÍDEO 3
+O que são e como criar e usar componentes - Angular para iniciantes
+https://www.youtube.com/watch?v=nQF3b1AAdg0
+VÍDEO 4
+Como criar formulários - Angular para iniciantes
+https://www.youtube.com/watch?v=lD0Jj4N5hvs
+VÍDEO 5
+Finalizando a aplicação de lista de tarefas - Angular para iniciantes
+https://www.youtube.com/watch?v=ja6ALvql7Ug
+
+
+https://bitbucket.org/fabricadecodigo/todoappangular/src/master/src/app/tasks/shared/task.service.ts
+
+https://www.youtube.com/watch?v=pXg6C3d8IJ0
+
+-------------------------------------------------------------------------------------------------------------
+
+gitpod
+reiniciar o servidor
+
+npx ng serve --disableHostCheck=true
+
+ou direto no terminal 
+
+nmp start
+
+
+<app-todo></app-todo>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="todolist not-done">
+        <h1>Todo List</h1>
+        <form class="form-inline">
+          <input type="text" class="form-control add-todo" name="item" [(ngModel)]="itemToAdd" placeholder="Add Item...">
+          <button id="checkAll" class="btn btn-success ml-2" (click)="addToList()">Adicionar</button>
+          {{itemToAdd |json}}
+        </form>
+        <hr>
+        <ul id="sortable" class="list-unstyled">
+          <li class="ui-state-default" *ngFor="let item of todoList; let i = index">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" value=""(click)="doItem(i)"/>{{item}}</label>
+                <button  value="" (click)="excluiTarefa(i)" >Excluir</button>
+              </div>
+            </li>
+          </ul>
+          <h2>Items Done</h2>
+          <ul id="sortable" class="list-unstyled">
+            <li class="ui-state-default" *ngFor="let item of doneList">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" checked /><span style="text-decoration:line-through;">
+                    {{item}}
+                  </span>
+                </label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+
+https://www.youtube.com/watch?v=w2q2Oxzv2bY&ab_channel=LearningProgramming
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+https://api.github.com/users/RudeBoyOne
+
+
+ng g m gh-users
+
+ng g c gh-users/components/gh-home
+
+ng g c gh-users/components/gh-home
+
+da para mudar @import '@angular/material/prebuilt-themes/NOME_DO_TEMA',   colo isso no style.css
+
+
+ng g c 
+gh-users/components/gh-dialog
+
+[14:42, 22/03/2022] Sanya Soulcodeacademy: a pasta services vc cria manual
+[14:43, 22/03/2022] Sanya Soulcodeacademy: Criar services dentro do gh-users
+Nome do serviço vai ser gh-api
+[14:43, 22/03/2022] Sanya Soulcodeacademy: ng g s gh-users/services/gh-api

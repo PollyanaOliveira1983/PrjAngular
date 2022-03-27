@@ -1,0 +1,19 @@
+<div class="f-container">
+  <mat-card *ngFor="let p of products; let i= index">
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          Nome: <strong>{{p.name}}</strong>
+        </mat-list-item>
+        <mat-list-item>
+          Preço: <strong>{{p.price | currency:'BRL'}}</strong>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button="warn" (click)="delete(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
